@@ -1,3 +1,5 @@
+/*Initialize--------------------------------------*/
+
 *{
     height: auto;
     margin: 0px;
@@ -20,7 +22,7 @@ body{
     height: fit-content;
 
 }
-
+/*Top Section--------------------------------------*/
 .top{
     border: 0;
     border: solid 3px;
@@ -42,6 +44,7 @@ body{
     box-shadow: #111417;
 }
 
+/* Rest of Website*/
 .bottom{
     background-color: rgba(92, 92, 92, 0.38);
     border: solid 0;
@@ -50,6 +53,7 @@ body{
     height:100%;
 }
 
+/* Entire area that asks for thr user-input --------------------------------------*/
 .input{
     width: 100%;
     display: flex;
@@ -66,6 +70,7 @@ body{
     margin-left: 5%;
 }
 
+/*A TODO Card + all components*/
 .todo {
     display: grid;
     grid-template-columns: repeat(2, 1.2fr) 0.6fr;
@@ -104,17 +109,19 @@ body{
     background-color: rgb(180 180 180);
     border-radius: 15px;
     border: 0;
-}
-
+}text-box:hover {
+     border: 0;
+ }
+ /*set up all buttons -------------------------------------- */
 button {
-
+    border: 0;
+    margin: 2px 2px 0px 2px;
     margin-right: 0%;
-    box-shadow: 0px 0px 25px 4px #4f4f4f;
+    box-shadow: 0px 0px 15px 1px #4f4f4f;
     background-color:#ff6600;
     border-radius:17px;
     cursor:pointer;
     color:#ffffff;
-    font-family:Arial;
     font-size:25px;
     padding:0px 0px;
     text-decoration:none;
@@ -157,8 +164,7 @@ button:active {
 }
 
 .list{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 20px;
     height: fit-content;
     padding: 50px 10%;
