@@ -108,6 +108,7 @@ let addEntry = (e) => {
  */
 let createTODO = (editable, text, date, p) => {
     let result = '';
+    let doc ='';
     if(!editable){
         result +=
             "                <div class=\"todo\">\n" +
@@ -150,7 +151,8 @@ let createTODO = (editable, text, date, p) => {
             "                </div>";
     }
 
-    let doc = new DOMParser().parseFromString(result, 'text/html');
+
+    doc = new DOMParser().parseFromString(result, 'text/html');
     console.log(doc.body.firstElementChild);
     return doc.body.firstElementChild;
 };

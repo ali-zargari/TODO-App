@@ -165,21 +165,14 @@ button:active {
 
 .list{
     display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     height: fit-content;
     padding: 50px 10%;
 }
 
-.entry{
-    flex: 0 1 150px;
-    flex-direction: column;
-    border: solid 1px;
-    border-radius: 50px;
-    width: 100%;
-    text-align: center;
-    top: 50%;
-    bottom: 50%;
-}
 
 .add{
     grid-area: add;
