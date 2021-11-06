@@ -13,13 +13,12 @@ let due_date = '';
  * @param td todo text
  * @constructor`
  */
-let Todo = function Todo (ed, tdt, p){
+let Todo = function Todo (ed, tdt, p, i){
+    let todo_id = i;
     let end_date = ed;
     let todo_text = tdt;
     let done = false;
     let priority = p;
-
-
 };
 
 /**
@@ -37,7 +36,9 @@ function setDate(e) {
  */
 function setPriority(e) {
     priority = e.target.value;
+    e.srcElement.style.backgroundColor = 'orangered';
     console.log(priority);
+
 
 }
 
@@ -49,22 +50,24 @@ function setPriority(e) {
  * */
 function start(){
     //document.querySelector('.task'+'').addEventListener('')
-    document.querySelector('.input').appendChild(createTODO(false, 'hahaha',' ', 1));
+    //document.querySelector('.input').appendChild(createTODO(true, '',' ', 1));
 
-    document.getElementsByClassName('todo')[0].addEventListener('change', function (e){
+    document.querySelectorAll(`.todo`)[0].addEventListener('change', function (e){
         saveText(e);
     });
 
-    document.getElementsByClassName('add')[0].addEventListener('click', function (e){
+    document.querySelectorAll('.add')[0].addEventListener('click', function (e){
         addEntry(e);
     });
 
-    document.getElementsByClassName('date')[0].addEventListener('input', function (e){
+    document.querySelectorAll('.date')[0].addEventListener('input', function (e){
         setDate(e);
     });
 
-    document.getElementsByClassName('a')[0].addEventListener('click', function (e){
-        setPriority(e);
+    document.querySelectorAll('.p').forEach(button =>{
+        button.addEventListener('click', function (e){
+            setPriority(e);
+        });
     });
 
 };
@@ -85,7 +88,7 @@ let addEntry = (e) => {
     //add entry element, then set it as the child of list, set id accordingly
     let list = document.querySelector('.list'+'');
     //let newEntry = addElement('div','todo',list);
-    list.appendChild(createTODO(false, 'hahaha',document.querySelector('.date'+'').value, 1));
+    list.appendChild(createTODO(false, current_text.value,document.querySelector('.date'+'').value, 1));
     //let newEntry = createTODO();
     //newEntry.innerHTML = createTODO().innerHTML;
     //newEntry.id = size;
@@ -94,8 +97,8 @@ let addEntry = (e) => {
     //let priority = document.querySelector('.a'+'').value;
 
     //set size variable and fill up array
-    //todo_list[size] = new Todo(date, newEntry.innerHTML, priority);
-    console.log(todo_list[size-1]);
+    todo_list[size] = new Todo(document.querySelector('.date'+'').value, current_text.value, priority, size);
+    console.log(todo_list[size]);
     size++;
 
 
@@ -109,51 +112,28 @@ let addEntry = (e) => {
 let createTODO = (editable, text, date, p) => {
     let result = '';
     let doc ='';
-    if(!editable){
-        result +=
-            "                <div class=\"todo\">\n" +
-            "                    <div class=\"todo_text\">\n" +
-            "                        <p class=\"text-box\">${text}</p>\n" +
-            "                    </div>\n" +
-            "\n" +
-            "                    <button class=\"add\">add</button>\n" +
-            "\n" +
-            "                    <div class=\"deadline\">\n" +
-            "                        <input class=\"date\" type=\"datetime-local\" name=\"myInput\" value=${date}>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"priority\">\n" +
-            "                        <button class=\"a\">1</button>\n" +
-            "                        <button class=\"a\">2</button>\n" +
-            "                        <button class=\"a\">3</button>\n" +
-            "                        <button class=\"a\">4</button>" +
-            "\n" +
-            "                    </div>\n" +
-            "                </div>";
-    } else {
-        result +=
-            "                <div class=\"todo\">\n" +
-            "                    <div class=\"todo_text\">\n" +
-            "                        <input class=\"text-box\">${text}</input>\n" +
-            "                    </div>\n" +
-            "\n" +
-            "                    <button class=\"add\">add</button>\n" +
-            "\n" +
-            "                    <div class=\"deadline\">\n" +
-            "                        <input class=\"date\" type=\"datetime-local\" name=\"myInput\" value=${date}>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"priority\">\n" +
-            "                        <button class=\"a\">1</button>\n" +
-            "                        <button class=\"a\">2</button>\n" +
-            "                        <button class=\"a\">3</button>\n" +
-            "                        <button class=\"a\">4</button>" +
-            "\n" +
-            "                    </div>\n" +
-            "                </div>";
-    }
+
+    result +=
+        "                <div class=\"todo\">\n" +
+        "                    <div class=\"todo_text\">\n" +
+        `                        <input class=\"text-box\" value=${text} readonly></input>\n` +
+        "                    </div>\n" +
+        "\n" +
+        "                    <button class=\"add\">done.</button>\n" +
+        "\n" +
+        "                    <div class=\"deadline\">\n" +
+        `                        <input class=\"date\" type=\"datetime-local\" name=\"myInput\" value=${date} readonly=\"readonly\">\n` +
+        "                    </div>\n" +
+        "                    <div class=\"priority\">\n" +
+        "                        <button class=\"a\">1</button>\n" +
+        "\n" +
+        "                    </div>\n" +
+        "                </div>";
+
 
 
     doc = new DOMParser().parseFromString(result, 'text/html');
-    console.log(doc.body.firstElementChild);
+    //console.log(doc.body.getElementsByClassName('a'));
     return doc.body.firstElementChild;
 };
 

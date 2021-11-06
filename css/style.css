@@ -25,7 +25,7 @@ body{
 /*Top Section--------------------------------------*/
 .top{
     border: 0;
-    border: solid 3px;
+    border: solid 0px;
     text-align: center;
     height: 500px;
     background-color: rgba(46, 51, 57, 0.92);
@@ -44,21 +44,34 @@ body{
     box-shadow: #111417;
 }
 
+.mid{
+    background-color: rgba(92, 92, 92, 0.38);
+    display: block;
+    justify-content: center;
+    align-content: center;
+    padding: 2.5% 30% 0 0%;
+}
+
 /* Rest of Website*/
 .bottom{
     background-color: rgba(92, 92, 92, 0.38);
     border: solid 0;
-    padding-top: 70px;
+    padding-top: 0px;
     min-height: 800px;
     height:100%;
 }
 
 /* Entire area that asks for thr user-input --------------------------------------*/
 .input{
-    width: 100%;
     display: flex;
+    border: 0;
+    border: solid 0px;
+    text-align: center;
+    height: auto;
+    padding: 0 0%;
     justify-content: center;
     gap: 20px;
+
 }
 
 .label{
@@ -75,7 +88,6 @@ body{
     display: grid;
     grid-template-columns: repeat(2, 1.2fr) 0.6fr;
     grid-template-rows: 1.6fr 0.8fr 0.7fr;
-    gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
     "todo_text todo_text todo_text"
@@ -92,7 +104,7 @@ body{
     text-shadow: 0px 0px 6px rgba(66,66,66,.85);
     height: 250px;
     padding: 10px 10px;
-    margin-right: 33%;
+    /*margin-right: 33%;*/
 }
 
 .todo_text {
@@ -115,8 +127,7 @@ body{
  /*set up all buttons -------------------------------------- */
 button {
     border: 0;
-    margin: 2px 2px 0px 2px;
-    margin-right: 0%;
+    margin: 2px 0% 0px 2px;
     box-shadow: 0px 0px 15px 1px #4f4f4f;
     background-color:#ff6600;
     border-radius:17px;
@@ -128,13 +139,16 @@ button {
     text-shadow:0px 1px 0px #5c5c5c;
 }button:hover {
      background-color:#bd762a;
+     background-color: orangered;
  }
 button:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    background-color: orangered;
+    top: 1px;
 }
 
 .deadline {
+
     grid-area: deadline;
     border-radius: 20px;
     background-color: #0066ff;
@@ -152,11 +166,11 @@ button:active {
 }
 
 .priority {
-    padding: 0 10px 0 10px;
+    padding: 0 3px 0 3px;
     display: grid;
     grid-template-columns: 0.8fr 0.8fr;
     grid-template-rows: repeat(2, 1fr);
-    gap: 0px 0px;
+    gap: 3px 3px;
     grid-template-areas:
     "a b"
     "c d";
