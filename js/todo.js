@@ -6,6 +6,7 @@
 
 import {init, modifyContainer, addElement, generateGrid} from "./tools.js";
 let temp_p = 1;
+let temp_pe = document.createElement('div');
 let size = 0;
 let todo_list = [];
 
@@ -52,6 +53,19 @@ Todo.prototype.getPriority = function () {
 function setPriority(e) {
     temp_p = e.srcElement.innerHTML;
 
+    //temp_pe.style.backgroundColor = 'rgb(255 102 0)';
+    e.srcElement.style.backgroundColor = 'orangered';
+    temp_pe.style.backgroundColor = 'rgb(255,102,0)';
+    temp_pe = e.srcElement;
+
+}
+
+function remove(e) {
+    //e.srcElement.remove();
+    e.srcElement.parentElement.remove();
+    console.log(e.path[1].attributes.id);
+    //todo_list = todo_list[0, e.path[1].attributes.id] + todo_list[e.path[1].attributes.id+1, size];
+    size--;
 }
 
 /***
@@ -72,15 +86,13 @@ function start(){
         addEntry();
     });
 
-    //document.querySelectorAll('.date')[0].addEventListener('input', function (e){
-    //    setDate(e);
-    //});
-
     document.querySelectorAll('.p').forEach(button =>{
         button.addEventListener('click', function (e){
             setPriority(e);
         });
     });
+
+
 
 };
 
@@ -107,11 +119,19 @@ let addEntry = () => {
         size
     );
     let list = document.querySelector('.list'+'');
-    list.appendChild(createTODO_Element(temp_todo));
+    let todo_element = createTODO_Element(temp_todo);
+    list.appendChild(todo_element);
+
+    console.log(todo_element.children[2]);
+    todo_element.children[2].addEventListener('click', function (e){
+            remove(e);
+    });
 
     //set size variable and fill up array
     todo_list[size] = temp_todo;
+    console.log(todo_list);
     size++;
+
 
 };
 
@@ -125,7 +145,7 @@ let createTODO_Element = (todo) =>{
     result +=
         `                <div class=\"card\" id=${todo.getTodoId()}>\n` +
         "                    <div class=\"todo_text\">\n" +
-        `                        <input class=\"text-box\" value=${todo.getText().value} readonly></input>\n` +
+        `                        <input class=\"text-box\" value=\"${todo.getText().value}\" readonly></input>\n` +
         "                    </div>\n" +
         "\n" +
         "                    <button class=\"done\">done.</button>\n" +
