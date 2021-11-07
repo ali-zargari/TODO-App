@@ -125,12 +125,16 @@ let addEntry = () => {
 
     console.log(todo_element.children[2]);
     todo_element.children[2].addEventListener('click', function (e){
-            remove(e);
+        remove(e);
+    });
+
+    todo_element.children[1].addEventListener('click', function (e){
+        remove(e);
     });
 
     //set size variable and fill up array
     todo_list[size] = temp_todo;
-    console.log(todo_list);
+    console.log(todo_element.children);
     size++;
 
 
