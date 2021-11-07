@@ -22,6 +22,12 @@ body{
     height: fit-content;
 
 }
+
+::-webkit-calendar-picker-indicator{
+    margin-left: -15px;
+}
+
+
 /*Top Section--------------------------------------*/
 .top{
     border: 0;
@@ -107,6 +113,29 @@ body{
     /*margin-right: 33%;*/
 }
 
+.card{
+    display: grid;
+    grid-template-columns: repeat(2, 1.2fr) 0.6fr;
+    grid-template-rows: 1.6fr 0.8fr 0.7fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "todo_text todo_text todo_text"
+    "deadline priority done"
+    "deadline priority remove";
+
+    flex: 1 1 100%;
+    border-radius: 20px;
+    font-size: 25px;
+    color: white;
+    background-color: #3d3d3d;
+    border-style: hidden;
+    box-shadow: 0 0 15px 0px #3d3d3d;
+    text-shadow: 0px 0px 6px rgba(66,66,66,.85);
+    height: 250px;
+    padding: 10px 10px;
+    /*margin-right: 33%;*/
+}
+
 .todo_text {
     background-color: rgb(180 180 180);
     margin-bottom: 10px;
@@ -124,6 +153,7 @@ body{
 }text-box:hover {
      border: 0;
  }
+
  /*set up all buttons -------------------------------------- */
 button {
     border: 0;
@@ -147,6 +177,20 @@ button:active {
     top: 1px;
 }
 
+button .p{
+    border: 0;
+    margin: 2px 0% 0px 2px;
+    box-shadow: 0px 0px 15px 1px #4f4f4f;
+    background-color:#ff6600;
+    border-radius:17px;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:25px;
+    padding:0px 0px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5c5c5c;
+}
+
 .deadline {
 
     grid-area: deadline;
@@ -155,8 +199,14 @@ button:active {
     padding: 0 10px;
 }
 
+.final_date{
+    padding-right: 0px;
+    width: 150px;
+}
+
 .date{
     height: 100%;
+
     background-color: #0066ff;
     border-radius: 20px;
     border: 0;
@@ -165,19 +215,38 @@ button:active {
     color: rgb(180, 180, 180);
 }
 
-.priority {
+.final_date{
+    width: 200px;
+}
+
+.a{
+    width: 100px;
+}
+
+.priority{
+
     padding: 0 3px 0 3px;
     display: grid;
-    grid-template-columns: 0.8fr 0.8fr;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 3px 3px;
     grid-template-areas:
     "a b"
     "c d";
     grid-area: priority;
 }
 
+.input .priority {
+    grid-template-columns: 0.8fr 0.8fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3px 3px;
+}
+
+.list .priority {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+
 .list{
+    overflow: hidden;
     display: grid;
     justify-content: center;
     grid-template-rows: repeat(3, 1fr);
