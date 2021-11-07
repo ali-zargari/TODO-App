@@ -62,9 +62,10 @@ function setPriority(e) {
 
 function remove(e) {
     //e.srcElement.remove();
-    e.srcElement.parentElement.remove();
     console.log(e.path[1].attributes.id);
     //todo_list = todo_list[0, e.path[1].attributes.id] + todo_list[e.path[1].attributes.id+1, size];
+    todo_list.splice(todo_list[e.path[1].attributes.id], 1 );
+    e.srcElement.parentElement.remove();
     size--;
 }
 
