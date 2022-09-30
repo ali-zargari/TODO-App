@@ -2,9 +2,9 @@
 
 *{
     height: auto;
-    margin: 0px;
+    margin: 0;
 
-    padding: 0px;
+    padding: 0;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 500;
     font-size: 20px;
@@ -20,7 +20,7 @@ body{
 
 .container{
     height: fit-content;
-
+    background-color: #0066ff;
 }
 
 ::-webkit-calendar-picker-indicator{
@@ -30,7 +30,6 @@ body{
 
 /*Top Section--------------------------------------*/
 .top{
-    border: 0;
     border: solid 0px;
     text-align: center;
     height: 500px;
@@ -52,7 +51,7 @@ body{
 
 .mid{
 
-    background-color: rgba(46, 51, 57, 0.92);
+    background-color: rgba(46, 51, 57, 0);
     display: block;
     justify-content: center;
     align-content: center;
@@ -61,7 +60,7 @@ body{
 
 /* Rest of Website*/
 .bottom{
-    background-color: rgba(46, 51, 57, 0.92);
+    background-color: rgba(46, 51, 57, 0.0);
     border: solid 0;
     padding-top: 0px;
     min-height: 800px;
@@ -168,7 +167,6 @@ button {
     text-decoration:none;
     text-shadow:0px 1px 0px #5c5c5c;
 }button:hover {
-     background-color:#bd762a;
      background-color: orangered;
  }
 button:active {
